@@ -1,6 +1,5 @@
 package com.liugaorong.blogserver.controller;
 
-import com.baomidou.mybatisplus.extension.plugins.pagination.PageDTO;
 import com.liugaorong.blogserver.pojo.Categories;
 import com.liugaorong.blogserver.service.CategoriesService;
 import com.liugaorong.blogserver.vo.Result;
@@ -21,7 +20,17 @@ public class CategoriesController {
     }
 
     @GetMapping
-    public Result get(@RequestParam PageDTO dto) {
-        return categoriesService.get(dto);
+    public Result get(@RequestParam int pageNum, int pageSize, String name) {
+        return categoriesService.get(pageNum, pageSize, name);
+    }
+
+    @PutMapping
+    public Result update(@RequestBody Categories categories) {
+        return categoriesService.update(categories);
+    }
+
+    @DeleteMapping("/{id}")
+    public Result remove(@PathVariable int id) {
+        return categoriesService.remove(id);
     }
 }

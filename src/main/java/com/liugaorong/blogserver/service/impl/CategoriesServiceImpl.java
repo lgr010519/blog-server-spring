@@ -1,7 +1,8 @@
 package com.liugaorong.blogserver.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.baomidou.mybatisplus.extension.plugins.pagination.PageDTO;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.liugaorong.blogserver.mapper.CategoriesMapper;
 import com.liugaorong.blogserver.pojo.Categories;
@@ -10,6 +11,8 @@ import com.liugaorong.blogserver.vo.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
+
+import java.util.Date;
 
 /**
  * @author admin
@@ -37,10 +40,30 @@ public class CategoriesServiceImpl extends ServiceImpl<CategoriesMapper, Categor
     }
 
     @Override
-    public Result get(PageDTO dto) {
-        Page<Categories> page = new Page<>(1, 6);
-        Page<Categories> categoriesPage = categoriesMapper.selectPage(page, null);
+    public Result get(int pageNum, int pageSize, String name) {
+        Page<Categories> page = new Page<>(pageNum, pageSize);
+        QueryWrapper<Categories> queryWrapper = new QueryWrapper<>();
+        if (name != null) {
+            queryWrapper.like("name", name);
+        }
+        Page<Categories> categoriesPage = super.page(page, queryWrapper);
         return Result.success(categoriesPage);
+    }
+
+    @Override
+    public Result update(Categories categories) {
+        UpdateWrapper<Categories> updateWrapper = new UpdateWrapper<>();
+        updateWrapper.eq("id", categories.getId())
+                .set("name", categories.getName())
+                .set("update_time", String.valueOf(new Date().getTime()));
+        boolean b = super.update(null, updateWrapper);
+        return Result.success(b);
+    }
+
+    @Override
+    public Result remove(int id) {
+        boolean b = super.removeById(id);
+        return Result.success(b);
     }
 }
 

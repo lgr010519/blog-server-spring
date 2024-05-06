@@ -1,6 +1,5 @@
 package com.liugaorong.blogserver.service;
 
-import com.baomidou.mybatisplus.extension.plugins.pagination.PageDTO;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.liugaorong.blogserver.pojo.Categories;
 import com.liugaorong.blogserver.vo.Result;
@@ -14,5 +13,9 @@ public interface CategoriesService extends IService<Categories> {
 
     Result add(Categories categories);
 
-    Result get(PageDTO dto);
+    Result get(int pageNum, int pageSize, String name);
+
+    Result update(Categories categories);
+
+    Result remove(int id);
 }

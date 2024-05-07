@@ -28,15 +28,13 @@ public class CategoriesServiceImpl extends ServiceImpl<CategoriesMapper, Categor
 
     @Override
     public Result add(Categories categories) {
+        boolean b;
         try {
-            boolean res = super.save(categories);
-            if (!res) {
-                return Result.error("添加失败");
-            }
+            b = super.save(categories);
         } catch (DuplicateKeyException e) {
-            return Result.error("该分类已添加");
+            return Result.error("该分类已存在");
         }
-        return Result.success(1);
+        return Result.success(b);
     }
 
     @Override

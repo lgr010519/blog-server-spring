@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liugaorong.blog.admin.mapper.SystemUserMapper">
+
+    <select id="selectOneByUsername" resultType="com.liugaorong.blog.model.entity.SystemUser">
+        select id,
+               username,
+               password,
+               name,
+               type,
+               phone,
+               avatar_url,
+               additional_info,
+               post_id,
+               status
+        from system_user
+        where is_deleted = 0
+          and username = #{username}
+    </select>
+</mapper>

@@ -22,6 +22,12 @@ spring:
       host: 192.168.159.100
       port: 6379
       database: 0
+#  web:
+#    cors:
+#      allowed-origins: "http://localhost:3000"
+#      allowed-methods: GET,POST,PUT,DELETE
+#      allowed-headers: "*"
+#      allow-credentials: true
 
 #用于打印框架生成的sql语句，便于调试
 mybatis-plus:

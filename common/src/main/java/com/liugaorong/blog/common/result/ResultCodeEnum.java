@@ -23,7 +23,7 @@ public enum ResultCodeEnum {
   ADMIN_CAPTCHA_CODE_NOT_FOUND(304, "未输入验证码"),
   
   ADMIN_LOGIN_AUTH(305, "未登陆"),
-  ADMIN_ACCOUNT_NOT_EXIST_ERROR(306, "账号不存在"),
+  ADMIN_ACCOUNT_NOT_EXIST_ERROR(306, "用户名不存在"),
   ADMIN_ACCOUNT_ERROR(307, "用户名或密码错误"),
   ADMIN_ACCOUNT_DISABLED_ERROR(308, "该用户已被禁用"),
   ADMIN_ACCESS_FORBIDDEN(309, "无访问权限"),

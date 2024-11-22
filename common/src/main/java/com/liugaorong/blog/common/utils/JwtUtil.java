@@ -16,7 +16,7 @@ public class JwtUtil {
     
     return Jwts.builder()
       .setSubject("LOGIN_USER")
-      .setExpiration(new Date(System.currentTimeMillis() + 3600000 * 24 * 365L))
+      .setExpiration(new Date(System.currentTimeMillis() + 3600000))
       .claim("userId", userId)
       .claim("username", username)
       .signWith(secretKey, SignatureAlgorithm.HS256)
@@ -44,6 +44,6 @@ public class JwtUtil {
   
   
   public static void main(String[] args) {
-    System.out.println(createToken(1L, "13888888888"));
+    System.out.println(createToken(1L, "admin"));
   }
 }

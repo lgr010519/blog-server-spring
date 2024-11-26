@@ -43,10 +43,6 @@ public class SystemUser extends BaseEntity {
   @TableField(value = "additional_info")
   private String additionalInfo;
   
-  @Schema(description = "岗位id")
-  @TableField(value = "post_id")
-  private Long postId;
-  
   @Schema(description = "账号状态")
   @TableField(value = "status")
   private Integer status;

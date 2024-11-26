@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liugaorong.blog.admin.mapper.AboutMapper">
+
+    <select id="selectAll" resultType="com.liugaorong.blog.admin.About">
+        select id,
+               description,
+               create_time,
+               update_time
+        from about
+    </select>
+    <select id="selectTagCloudList" resultType="com.liugaorong.blog.admin.vo.login.TagCloudVo">
+        select id,
+               name
+        from tag_cloud tc
+        where tc.about_id = #{id}
+    </select>
+    <select id="selectAboutImgList" resultType="com.liugaorong.blog.admin.vo.login.AboutImgVo">
+        select id,
+               img_url
+        from about_img ai
+        where ai.about_id = #{id}
+    </select>
+</mapper>

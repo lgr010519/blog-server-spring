@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liugaorong.blog.admin.mapper.AboutImgMapper">
+
+    <resultMap id="BaseResultMap" type="com.liugaorong.blog.admin.AboutImg">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="imgUrl" column="img_url" jdbcType="VARCHAR"/>
+            <result property="aboutId" column="about_id" jdbcType="BIGINT"/>
+            <result property="version" column="version" jdbcType="TINYINT"/>
+            <result property="isDeleted" column="is_deleted" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,img_url,about_id,
+        version,is_deleted
+    </sql>
+</mapper>

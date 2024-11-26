@@ -24,7 +24,6 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class LoginServiceImpl implements LoginService {
   
-  
   @Autowired
   private StringRedisTemplate stringRedisTemplate;
   

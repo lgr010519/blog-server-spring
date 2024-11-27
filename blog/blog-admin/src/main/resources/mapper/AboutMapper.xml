@@ -3,24 +3,47 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.liugaorong.blog.admin.mapper.AboutMapper">
-
+    <insert id="insertAboutImg">
+        insert into about_img (img_url, about_id)
+        values (#{imgUrl}, #{id});
+    </insert>
+    <insert id="insertTagCloud">
+        insert into tag_cloud (name, about_id)
+        values (#{name}, #{id});
+    </insert>
+    <update id="updateAboutById">
+        update about
+        set description = #{description},
+            update_time = #{updateTime}
+        where id = #{id};
+    </update>
+    <delete id="deleteAboutImg">
+        delete
+        from about_img
+        where about_id = #{id};
+    </delete>
+    <delete id="deleteTagCloud">
+        delete
+        from tag_cloud
+        where about_id = #{id};
+    </delete>
     <select id="selectAll" resultType="com.liugaorong.blog.admin.About">
         select id,
                description,
                create_time,
                update_time
-        from about
+        from about;
     </select>
-    <select id="selectTagCloudList" resultType="com.liugaorong.blog.admin.vo.login.TagCloudVo">
+    <select id="selectTagCloudList" resultType="com.liugaorong.blog.admin.vo.about.TagCloudVo">
         select id,
                name
         from tag_cloud tc
-        where tc.about_id = #{id}
+        where tc.about_id = #{id};
     </select>
-    <select id="selectAboutImgList" resultType="com.liugaorong.blog.admin.vo.login.AboutImgVo">
+    <select id="selectAboutImgList" resultType="com.liugaorong.blog.admin.vo.about.AboutImgVo">
         select id,
                img_url
         from about_img ai
-        where ai.about_id = #{id}
+        where ai.about_id = #{id};
     </select>
 </mapper>

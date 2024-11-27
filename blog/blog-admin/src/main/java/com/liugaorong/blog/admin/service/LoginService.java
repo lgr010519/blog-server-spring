@@ -1,6 +1,6 @@
 package com.liugaorong.blog.admin.service;
 
-import com.liugaorong.blog.admin.vo.login.CaptchaVo;
+import com.liugaorong.blog.admin.vo.about.CaptchaVo;
 import com.liugaorong.blog.admin.vo.login.LoginVo;
 import com.liugaorong.blog.model.entity.SystemUser;
 

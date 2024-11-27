@@ -2,7 +2,8 @@ package com.liugaorong.blog.admin.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.liugaorong.blog.admin.About;
-import com.liugaorong.blog.admin.vo.login.AboutVo;
+import com.liugaorong.blog.admin.dto.about.AboutDto;
+import com.liugaorong.blog.admin.vo.about.AboutVo;
 
 import java.util.List;
 
@@ -14,4 +15,6 @@ import java.util.List;
 public interface AboutService extends IService<About> {
   
   List<AboutVo> getList();
+  
+  void saveOrUpdateAbout(AboutDto aboutDto);
 }

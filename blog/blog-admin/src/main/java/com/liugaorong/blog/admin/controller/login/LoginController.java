@@ -1,7 +1,7 @@
 package com.liugaorong.blog.admin.controller.login;
 
 import com.liugaorong.blog.admin.service.LoginService;
-import com.liugaorong.blog.admin.vo.login.CaptchaVo;
+import com.liugaorong.blog.admin.vo.about.CaptchaVo;
 import com.liugaorong.blog.admin.vo.login.LoginVo;
 import com.liugaorong.blog.common.login.LoginUserHolder;
 import com.liugaorong.blog.common.result.Result;

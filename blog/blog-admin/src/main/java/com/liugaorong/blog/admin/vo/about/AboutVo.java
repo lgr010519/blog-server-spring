@@ -1,4 +1,4 @@
-package com.liugaorong.blog.admin.vo.login;
+package com.liugaorong.blog.admin.vo.about;
 
 import com.liugaorong.blog.admin.About;
 import io.swagger.v3.oas.annotations.media.Schema;

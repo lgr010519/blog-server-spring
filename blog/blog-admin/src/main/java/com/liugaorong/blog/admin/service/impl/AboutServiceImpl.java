@@ -2,16 +2,19 @@ package com.liugaorong.blog.admin.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.liugaorong.blog.admin.About;
+import com.liugaorong.blog.admin.dto.about.AboutDto;
 import com.liugaorong.blog.admin.mapper.AboutMapper;
 import com.liugaorong.blog.admin.service.AboutService;
-import com.liugaorong.blog.admin.vo.login.AboutImgVo;
-import com.liugaorong.blog.admin.vo.login.AboutVo;
-import com.liugaorong.blog.admin.vo.login.TagCloudVo;
+import com.liugaorong.blog.admin.vo.about.AboutImgVo;
+import com.liugaorong.blog.admin.vo.about.AboutVo;
+import com.liugaorong.blog.admin.vo.about.TagCloudVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -48,6 +51,28 @@ public class AboutServiceImpl extends ServiceImpl<AboutMapper, About>
     }
     
     return aboutVoList;
+  }
+  
+  @Override
+  public void saveOrUpdateAbout(AboutDto aboutDto) {
+    
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    String updateTime = sdf.format(new Date());
+    aboutMapper.updateAboutById(aboutDto.getId(), aboutDto.getDescription(), updateTime);
+    
+    aboutMapper.deleteAboutImg(aboutDto.getId());
+    
+    aboutMapper.deleteTagCloud(aboutDto.getId());
+    
+    for (String imgUrl :
+      aboutDto.getAboutImgList()) {
+      aboutMapper.insertAboutImg(aboutDto.getId(), imgUrl);
+    }
+    
+    for (String name :
+      aboutDto.getTagCloudList()) {
+      aboutMapper.insertTagCloud(aboutDto.getId(), name);
+    }
   }
 }
 

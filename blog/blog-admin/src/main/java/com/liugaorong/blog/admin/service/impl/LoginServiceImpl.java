@@ -2,7 +2,7 @@ package com.liugaorong.blog.admin.service.impl;
 
 import com.liugaorong.blog.admin.mapper.SystemUserMapper;
 import com.liugaorong.blog.admin.service.LoginService;
-import com.liugaorong.blog.admin.vo.login.CaptchaVo;
+import com.liugaorong.blog.admin.vo.about.CaptchaVo;
 import com.liugaorong.blog.admin.vo.login.LoginVo;
 import com.liugaorong.blog.common.constant.RedisConstant;
 import com.liugaorong.blog.common.exception.BlogException;

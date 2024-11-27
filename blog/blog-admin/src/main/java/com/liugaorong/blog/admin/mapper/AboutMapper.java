@@ -2,8 +2,8 @@ package com.liugaorong.blog.admin.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.liugaorong.blog.admin.About;
-import com.liugaorong.blog.admin.vo.login.AboutImgVo;
-import com.liugaorong.blog.admin.vo.login.TagCloudVo;
+import com.liugaorong.blog.admin.vo.about.AboutImgVo;
+import com.liugaorong.blog.admin.vo.about.TagCloudVo;
 
 import java.util.List;
 
@@ -20,6 +20,16 @@ public interface AboutMapper extends BaseMapper<About> {
   List<TagCloudVo> selectTagCloudList(Long id);
   
   List<AboutImgVo> selectAboutImgList(Long id);
+  
+  void updateAboutById(Long id, String description, String updateTime);
+  
+  void deleteAboutImg(Long id);
+  
+  void deleteTagCloud(Long id);
+  
+  void insertAboutImg(Long id, String imgUrl);
+  
+  void insertTagCloud(Long id, String name);
 }
 
 

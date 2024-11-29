@@ -3,7 +3,6 @@ package com.liugaorong.blog.admin.dto.article;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
-import java.util.Date;
 import java.util.List;
 
 @Data
@@ -13,11 +12,11 @@ public class ArticleQueryDto {
   @Schema(description = "文章标题")
   private String title;
   
-  @Schema(description = "分类id")
-  private Long categoryId;
+  @Schema(description = "文章所属分类id")
+  private String categoryIds;
   
   @Schema(description = "文章所属标签id列表")
-  private List<Long> tagIdList;
+  private String tagIds;
   
   @Schema(description = "启用状态 1启用 0停用")
   private Integer status;
@@ -26,8 +25,8 @@ public class ArticleQueryDto {
   private Integer publishStatus;
   
   @Schema(description = "创建时间")
-  private List<Date> createTime;
+  private List<String> createTime;
   
   @Schema(description = "更新时间")
-  private List<Date> updateTime;
+  private List<String> updateTime;
 }

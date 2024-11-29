@@ -5,14 +5,11 @@ import com.liugaorong.blog.model.entity.Tags;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
-import java.util.Date;
+import java.util.List;
 
 @Data
 @Schema(description = "文章vo")
 public class ArticleVo extends BaseEntity {
-  
-  @Schema(description = "文章id")
-  private Long id;
   
   @Schema(description = "文章标题")
   private String title;
@@ -29,8 +26,8 @@ public class ArticleVo extends BaseEntity {
   @Schema(description = "分类名称")
   private String categoryName;
   
-  @Schema(description = "标签")
-  private Tags tags;
+  @Schema(description = "标签列表")
+  private List<Tags> tagsList;
   
   @Schema(description = "查看数量")
   private Long views;
@@ -49,10 +46,4 @@ public class ArticleVo extends BaseEntity {
   
   @Schema(description = "发布状态 1已发布 0未发布")
   private Integer publishStatus;
-  
-  @Schema(description = "创建时间")
-  private Date createTime;
-  
-  @Schema(description = "更新时间")
-  private Date updateTime;
 }

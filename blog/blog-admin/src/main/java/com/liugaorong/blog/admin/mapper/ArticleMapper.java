@@ -10,6 +10,7 @@ import com.liugaorong.blog.model.entity.Category;
 import com.liugaorong.blog.model.entity.Tags;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author admin
@@ -27,11 +28,11 @@ public interface ArticleMapper extends BaseMapper<Article> {
   
   void deleteOldTagIdByArticleId(Long articleId);
   
-  Page<ArticleVo> selectArticlePage(Page<ArticleVo> page, ArticleQueryDto queryDto);
+  Page<ArticleVo> selectArticlePage(Page<ArticleVo> page, ArticleQueryDto queryDto, List<Long> categoryIdList);
   
   Category selectCategoryName(Long categoryId);
   
-  Tags selectTagName(Long articleId);
+  List<Tags> selectTagName(Long articleId);
 }
 
 

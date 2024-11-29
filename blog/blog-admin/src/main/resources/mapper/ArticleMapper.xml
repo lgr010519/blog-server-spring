@@ -39,27 +39,30 @@
         where article_id = #{articleId};
     </delete>
     <select id="selectArticlePage" resultType="com.liugaorong.blog.admin.vo.article.ArticleVo">
-        select id,
-        title,
-        cover,
-        introduction,
-        category_id,
-        views,
-        comment,
-        `like`,
-        collect,
-        status,
-        publish_status,
-        create_time,
-        update_time
-        from article
+        select a.id,
+        a.title,
+        a.cover,
+        a.introduction,
+        a.category_id,
+        a.views,
+        a.comment,
+        a.`like`,
+        a.collect,
+        a.status,
+        a.publish_status,
+        a.create_time,
+        a.update_time
+        from article a
         <where>
             is_deleted = 0
             <if test="queryDto.title != null">
-                and title=#{queryDto.title}
+                and title like concat('%',#{queryDto.title},'%')
             </if>
-            <if test="queryDto.categoryId != null">
-                and category_id=#{queryDto.categoryId}
+            <if test="categoryIdList != null">
+                and category_id in
+                <foreach collection="categoryIdList" item="categoryId" open="(" separator="," close=")">
+                    #{categoryId}
+                </foreach>
             </if>
             <if test="queryDto.status != null">
                 and status=#{queryDto.status}
@@ -82,7 +85,7 @@
           and is_deleted = 0;
     </select>
     <select id="selectTagName" resultType="com.liugaorong.blog.model.entity.Tags">
-        select t.id, t.`name`
+        select t.id, t.`name`, t.status, t.create_time, t.update_time
         from `article` a
                  join article_tag `at` on a.id = `at`.article_id
                  join tag t on t.id = `at`.tag_id;

@@ -10,7 +10,8 @@ import com.liugaorong.blog.model.entity.Category;
  * @Entity com.liugaorong.blog.model.entity.Categories
  */
 public interface CategoryMapper extends BaseMapper<Category> {
-
+  
+  Long selectArticleCount(Long categoryId);
 }
 
 

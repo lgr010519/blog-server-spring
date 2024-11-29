@@ -27,23 +27,26 @@
         from tag_cloud
         where about_id = #{id};
     </delete>
-    <select id="selectAll" resultType="com.liugaorong.blog.admin.About">
+    <select id="selectAll" resultType="com.liugaorong.blog.model.entity.About">
         select id,
                description,
                create_time,
                update_time
-        from about;
+        from about
+        where is_deleted = 0;
     </select>
     <select id="selectTagCloudList" resultType="com.liugaorong.blog.admin.vo.about.TagCloudVo">
         select id,
                name
         from tag_cloud tc
-        where tc.about_id = #{id};
+        where tc.about_id = #{id}
+          and is_deleted = 0;
     </select>
     <select id="selectAboutImgList" resultType="com.liugaorong.blog.admin.vo.about.AboutImgVo">
         select id,
                img_url
         from about_img ai
-        where ai.about_id = #{id};
+        where ai.about_id = #{id}
+          and is_deleted = 0;
     </select>
 </mapper>

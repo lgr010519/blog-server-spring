@@ -1,6 +1,8 @@
 package com.liugaorong.blog.admin.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.liugaorong.blog.admin.vo.tags.TagsVo;
 import com.liugaorong.blog.model.entity.Tags;
 
 /**
@@ -9,5 +11,6 @@ import com.liugaorong.blog.model.entity.Tags;
  * @createDate 2024-11-20 11:19:15
  */
 public interface TagService extends IService<Tags> {
-
+  
+  Page<TagsVo> getList(Page<Tags> page, Page<TagsVo> pageVo, String name, Integer status);
 }

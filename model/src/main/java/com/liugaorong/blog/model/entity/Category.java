@@ -17,9 +17,5 @@ public class Category extends BaseEntity {
   @TableField(value = "name")
   private String name;
   
-  @Schema(description = "文章数量")
-  @TableField(value = "article_num")
-  private Long articleNum;
-  
   private static final long serialVersionUID = 1L;
 }

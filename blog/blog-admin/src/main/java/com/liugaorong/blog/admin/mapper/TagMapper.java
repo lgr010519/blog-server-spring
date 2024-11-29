@@ -10,7 +10,8 @@ import com.liugaorong.blog.model.entity.Tags;
  * @Entity com.liugaorong.blog.admin.Tag
  */
 public interface TagMapper extends BaseMapper<Tags> {
-
+  
+  Long selectArticleCount(Long tagId);
 }
 
 

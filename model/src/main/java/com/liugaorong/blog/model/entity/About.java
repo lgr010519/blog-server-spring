@@ -1,8 +1,7 @@
-package com.liugaorong.blog.admin;
+package com.liugaorong.blog.model.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.liugaorong.blog.model.entity.BaseEntity;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 

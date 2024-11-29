@@ -1,13 +1,13 @@
 package com.liugaorong.blog.admin.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.liugaorong.blog.admin.About;
 import com.liugaorong.blog.admin.dto.about.AboutDto;
 import com.liugaorong.blog.admin.mapper.AboutMapper;
 import com.liugaorong.blog.admin.service.AboutService;
 import com.liugaorong.blog.admin.vo.about.AboutImgVo;
 import com.liugaorong.blog.admin.vo.about.AboutVo;
 import com.liugaorong.blog.admin.vo.about.TagCloudVo;
+import com.liugaorong.blog.model.entity.About;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

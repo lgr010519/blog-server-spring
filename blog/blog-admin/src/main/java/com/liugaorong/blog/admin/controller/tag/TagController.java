@@ -1,9 +1,9 @@
 package com.liugaorong.blog.admin.controller.tag;
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.liugaorong.blog.admin.service.TagService;
+import com.liugaorong.blog.admin.vo.tags.TagsVo;
 import com.liugaorong.blog.common.result.Result;
 import com.liugaorong.blog.model.entity.Tags;
 import io.swagger.v3.oas.annotations.Operation;
@@ -21,11 +21,12 @@ public class TagController {
   
   @Operation(summary = "标签列表")
   @GetMapping("getList")
-  public Result<IPage<Tags>> getList(@RequestParam long current, @RequestParam long size, String name) {
+  public Result<IPage<TagsVo>> getList(@RequestParam long current, @RequestParam long size, String name, Integer status) {
+    
     Page<Tags> page = new Page<>(current, size);
-    LambdaQueryWrapper<Tags> queryWrapper = new LambdaQueryWrapper<>();
-    queryWrapper.like(name != null, Tags::getName, name);
-    Page<Tags> result = service.page(page, queryWrapper);
+    Page<TagsVo> pageVo = new Page<>(current, size);
+    Page<TagsVo> result = service.getList(page, pageVo, name, status);
+    
     return Result.ok(result);
   }
   

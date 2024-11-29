@@ -1,9 +1,9 @@
 package com.liugaorong.blog.admin.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.liugaorong.blog.admin.About;
 import com.liugaorong.blog.admin.dto.about.AboutDto;
 import com.liugaorong.blog.admin.vo.about.AboutVo;
+import com.liugaorong.blog.model.entity.About;
 
 import java.util.List;
 

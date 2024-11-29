@@ -1,6 +1,6 @@
 package com.liugaorong.blog.admin.vo.about;
 
-import com.liugaorong.blog.admin.About;
+import com.liugaorong.blog.model.entity.About;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 

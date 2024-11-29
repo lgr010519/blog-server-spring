@@ -16,10 +16,6 @@ public class Tags extends BaseEntity {
   @TableField(value = "name")
   private String name;
   
-  @Schema(description = "文章数量")
-  @TableField(value = "article_num")
-  private Long articleNum;
-  
   @Schema(description = "标签状态")
   @TableField(value = "status")
   private Integer status;

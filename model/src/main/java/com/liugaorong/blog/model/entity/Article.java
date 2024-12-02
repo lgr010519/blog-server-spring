@@ -12,6 +12,7 @@ import lombok.Data;
 @TableName(value = "article")
 @Data
 public class Article extends BaseEntity {
+  
   @Schema(description = "文章标题")
   @TableField(value = "title")
   private String title;

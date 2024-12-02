@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.liugaorong.blog.admin.dto.article.ArticleDto;
 import com.liugaorong.blog.admin.dto.article.ArticleQueryDto;
 import com.liugaorong.blog.admin.service.ArticleService;
+import com.liugaorong.blog.admin.vo.article.ArticleDetailVo;
 import com.liugaorong.blog.admin.vo.article.ArticleVo;
 import com.liugaorong.blog.common.result.Result;
 import com.liugaorong.blog.model.entity.Article;
@@ -30,6 +31,15 @@ public class ArticleController {
     Page<ArticleVo> result = service.getList(page, queryDto);
     
     return Result.ok(result);
+  }
+  
+  @Operation(summary = "获取文章详情")
+  @GetMapping("getDetail")
+  public Result<ArticleDetailVo> getDetail(@RequestParam Long id) {
+    
+    ArticleDetailVo articleDetailVo = service.getDetail(id);
+    
+    return Result.ok(articleDetailVo);
   }
   
   @Operation(summary = "添加或修改文章")
@@ -58,9 +68,18 @@ public class ArticleController {
   
   @Operation(summary = "删除文章")
   @DeleteMapping("remove")
-  public Result saveOrUpdate(@RequestParam Long id) {
+  public Result remove(@RequestParam Long id) {
     
     service.removeById(id);
+    
+    return Result.ok();
+  }
+  
+  @Operation(summary = "一键开启/关闭收藏")
+  @PostMapping("updateCollectBatch")
+  public Result updateCollectBatch(@RequestBody Article article) {
+    
+    service.updateCollectBatch(article.getIsCollect());
     
     return Result.ok();
   }

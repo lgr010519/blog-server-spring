@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.liugaorong.blog.admin.dto.article.ArticleDto;
 import com.liugaorong.blog.admin.dto.article.ArticleQueryDto;
+import com.liugaorong.blog.admin.vo.article.ArticleDetailVo;
 import com.liugaorong.blog.admin.vo.article.ArticleVo;
 import com.liugaorong.blog.model.entity.Article;
 
@@ -17,4 +18,8 @@ public interface ArticleService extends IService<Article> {
   void saveOrUpdateArticle(ArticleDto articleDto);
   
   Page<ArticleVo> getList(Page<ArticleVo> page, ArticleQueryDto queryDto);
+  
+  ArticleDetailVo getDetail(Long id);
+  
+  void updateCollectBatch(Integer isCollect);
 }

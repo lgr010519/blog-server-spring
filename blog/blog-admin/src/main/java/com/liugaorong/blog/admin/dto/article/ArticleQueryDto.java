@@ -3,8 +3,6 @@ package com.liugaorong.blog.admin.dto.article;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
-import java.util.List;
-
 @Data
 @Schema(description = "文章管理分页查询dto")
 public class ArticleQueryDto {
@@ -24,9 +22,15 @@ public class ArticleQueryDto {
   @Schema(description = "发布状态 1已发布 0未发布")
   private Integer publishStatus;
   
-  @Schema(description = "创建时间")
-  private List<String> createTime;
+  @Schema(description = "创建开始时间")
+  private String createTimeStart;
   
-  @Schema(description = "更新时间")
-  private List<String> updateTime;
+  @Schema(description = "创建截止时间")
+  private String createTimeEnd;
+  
+  @Schema(description = "更新开始时间")
+  private String updateTimeStart;
+  
+  @Schema(description = "更新截止时间")
+  private String updateTimeEnd;
 }

@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.liugaorong.blog.admin.dto.article.ArticleDto;
 import com.liugaorong.blog.admin.dto.article.ArticleQueryDto;
+import com.liugaorong.blog.admin.vo.article.ArticleDetailVo;
 import com.liugaorong.blog.admin.vo.article.ArticleVo;
 import com.liugaorong.blog.model.entity.Article;
 import com.liugaorong.blog.model.entity.Category;
@@ -32,7 +33,11 @@ public interface ArticleMapper extends BaseMapper<Article> {
   
   Category selectCategoryName(Long categoryId);
   
-  List<Tags> selectTagName(Long articleId);
+  List<Tags> selectTagList(Long articleId);
+  
+  ArticleDetailVo selectArticleDetail(Long id);
+  
+  void updateCollectBatch(Integer isCollect);
 }
 
 

@@ -6,6 +6,7 @@ import com.liugaorong.blog.admin.dto.article.ArticleDto;
 import com.liugaorong.blog.admin.dto.article.ArticleQueryDto;
 import com.liugaorong.blog.admin.mapper.ArticleMapper;
 import com.liugaorong.blog.admin.service.ArticleService;
+import com.liugaorong.blog.admin.vo.article.ArticleDetailVo;
 import com.liugaorong.blog.admin.vo.article.ArticleVo;
 import com.liugaorong.blog.model.entity.Article;
 import com.liugaorong.blog.model.entity.Category;
@@ -32,18 +33,20 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article>
   @Override
   public void saveOrUpdateArticle(ArticleDto articleDto) {
     
+    Date time = new Date();
+    
     if (articleDto.getId() == null) {
+      articleDto.setCreateTime(time);
       mapper.insertArticle(articleDto);
     } else {
+      articleDto.setUpdateTime(time);
       mapper.updateArticle(articleDto);
       mapper.deleteOldTagIdByArticleId(articleDto.getId());
     }
     
-    Date createTime = new Date();
-    
     for (Long tagId :
       articleDto.getTagIdList()) {
-      mapper.insertArticleIdAndTagId(articleDto.getId(), tagId, createTime);
+      mapper.insertArticleIdAndTagId(articleDto.getId(), tagId, time);
     }
   }
   
@@ -72,7 +75,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article>
 //      Category category = mapper.selectCategoryName(iterator.next().getCategoryId());
 //      iterator.next().setCategoryName(category.getName());
 //
-//      List<Tags> tagsList = mapper.selectTagName(iterator.next().getId());
+//      List<Tags> tagsList = mapper.selectTagList(iterator.next().getId());
 //      iterator.next().setTagsList(tagsList);
 //
 //      if (tagIdList != null) {
@@ -97,7 +100,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article>
       Category category = mapper.selectCategoryName(articleVo.getCategoryId());
       articleVo.setCategoryName(category.getName());
       
-      List<Tags> tagsList = mapper.selectTagName(articleVo.getId());
+      List<Tags> tagsList = mapper.selectTagList(articleVo.getId());
       articleVo.setTagsList(tagsList);
 
 //      if (tagIdList != null) {
@@ -118,6 +121,21 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article>
     }
     
     return articleVoPage;
+  }
+  
+  @Override
+  public ArticleDetailVo getDetail(Long id) {
+    
+    ArticleDetailVo articleDetailVo = mapper.selectArticleDetail(id);
+    List<Tags> tagsList = mapper.selectTagList(id);
+    articleDetailVo.setTagsList(tagsList);
+    
+    return articleDetailVo;
+  }
+  
+  @Override
+  public void updateCollectBatch(Integer isCollect) {
+    mapper.updateCollectBatch(isCollect);
   }
 }
 

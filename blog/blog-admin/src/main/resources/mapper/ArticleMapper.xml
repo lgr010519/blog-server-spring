@@ -33,6 +33,11 @@
             update_time    = #{updateTime}
         where id = #{id};
     </update>
+    <update id="updateCollectBatch">
+        update article
+        set is_collect = #{isCollect}
+        where is_deleted = 0;
+    </update>
     <delete id="deleteOldTagIdByArticleId">
         delete
         from article_tag
@@ -70,11 +75,11 @@
             <if test="queryDto.publishStatus != null">
                 and publish_status=#{queryDto.publishStatus}
             </if>
-            <if test="queryDto.createTime != null">
-                and create_time between #{queryDto.createtime.get(0)} and #{queryDto.createtime.get(1)}
+            <if test="queryDto.createTimeStart != null">
+                and create_time between #{queryDto.createTimeStart} and #{queryDto.createTimeEnd}
             </if>
-            <if test="queryDto.updateTime != null">
-                and update_time between #{queryDto.updateTime.get(0)} and #{queryDto.updateTime.get(1)}
+            <if test="queryDto.updateTimeStart != null">
+                and update_time between #{queryDto.updateTimeStart} and #{queryDto.updateTimeEnd}
             </if>
         </where>
     </select>
@@ -84,10 +89,16 @@
         where id = #{categoryId}
           and is_deleted = 0;
     </select>
-    <select id="selectTagName" resultType="com.liugaorong.blog.model.entity.Tags">
-        select t.id, t.`name`, t.status, t.create_time, t.update_time
+    <select id="selectTagList" resultType="com.liugaorong.blog.model.entity.Tags">
+        select t.id, t.name, t.status, t.create_time, t.update_time
         from `article` a
                  join article_tag `at` on a.id = `at`.article_id
-                 join tag t on t.id = `at`.tag_id;
+                 join tag t on t.id = `at`.tag_id
+        where a.id = #{articleId};
+    </select>
+    <select id="selectArticleDetail" resultType="com.liugaorong.blog.admin.vo.article.ArticleDetailVo">
+        select *
+        from article
+        where id = #{id};
     </select>
 </mapper>

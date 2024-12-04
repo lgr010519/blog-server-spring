@@ -13,4 +13,6 @@ import com.liugaorong.blog.model.entity.Comment;
 public interface CommentService extends IService<Comment> {
   
   Page<CommentVo> getList(Page<CommentVo> page, String articleTitle, Integer auditStatus);
+  
+  void updateStatus(Long id, Integer auditStatus);
 }

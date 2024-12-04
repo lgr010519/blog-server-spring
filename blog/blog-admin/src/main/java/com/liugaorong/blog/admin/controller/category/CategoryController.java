@@ -23,9 +23,8 @@ public class CategoryController {
   @GetMapping("getList")
   public Result<IPage<CategoryVo>> getList(@RequestParam long current, @RequestParam long size, String name) {
     
-    Page<Category> page = new Page<>(current, size);
-    Page<CategoryVo> pageVo = new Page<>(current, size);
-    Page<CategoryVo> result = service.getList(page, pageVo, name);
+    Page<CategoryVo> page = new Page<>(current, size);
+    Page<CategoryVo> result = service.getList(page, name);
     
     return Result.ok(result);
   }

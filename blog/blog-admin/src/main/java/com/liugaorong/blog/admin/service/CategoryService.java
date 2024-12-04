@@ -12,5 +12,5 @@ import com.liugaorong.blog.model.entity.Category;
  */
 public interface CategoryService extends IService<Category> {
   
-  Page<CategoryVo> getList(Page<Category> page, Page<CategoryVo> pageVo, String name);
+  Page<CategoryVo> getList(Page<CategoryVo> page, String name);
 }

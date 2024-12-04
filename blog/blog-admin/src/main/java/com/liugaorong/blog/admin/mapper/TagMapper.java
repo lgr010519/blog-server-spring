@@ -1,6 +1,8 @@
 package com.liugaorong.blog.admin.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.liugaorong.blog.admin.vo.tags.TagsVo;
 import com.liugaorong.blog.model.entity.Tags;
 
 /**
@@ -12,6 +14,8 @@ import com.liugaorong.blog.model.entity.Tags;
 public interface TagMapper extends BaseMapper<Tags> {
   
   Long selectArticleCount(Long tagId);
+  
+  Page<TagsVo> selectTagsPage(Page<TagsVo> page, String name, Integer status);
 }
 
 

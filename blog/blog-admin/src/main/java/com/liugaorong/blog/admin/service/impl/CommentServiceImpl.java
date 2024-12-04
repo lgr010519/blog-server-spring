@@ -9,6 +9,8 @@ import com.liugaorong.blog.model.entity.Comment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+
 /**
  * @author admin
  * @description 针对表【comment】的数据库操作Service实现
@@ -35,6 +37,13 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment>
     }
     
     return commentVoPage;
+  }
+  
+  @Override
+  public void updateStatus(Long id, Integer auditStatus) {
+    
+    Date auditTime = new Date();
+    mapper.updateStatus(id, auditStatus, auditTime);
   }
 }
 

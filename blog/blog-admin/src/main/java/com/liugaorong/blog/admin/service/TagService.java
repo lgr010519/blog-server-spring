@@ -12,5 +12,5 @@ import com.liugaorong.blog.model.entity.Tags;
  */
 public interface TagService extends IService<Tags> {
   
-  Page<TagsVo> getList(Page<Tags> page, Page<TagsVo> pageVo, String name, Integer status);
+  Page<TagsVo> getList(Page<TagsVo> page, String name, Integer status);
 }

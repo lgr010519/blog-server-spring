@@ -23,9 +23,8 @@ public class TagController {
   @GetMapping("getList")
   public Result<IPage<TagsVo>> getList(@RequestParam long current, @RequestParam long size, String name, Integer status) {
     
-    Page<Tags> page = new Page<>(current, size);
-    Page<TagsVo> pageVo = new Page<>(current, size);
-    Page<TagsVo> result = service.getList(page, pageVo, name, status);
+    Page<TagsVo> page = new Page<>(current, size);
+    Page<TagsVo> result = service.getList(page, name, status);
     
     return Result.ok(result);
   }

@@ -10,4 +10,17 @@
         where tag_id = #{tagId}
           and is_deleted = 0;
     </select>
+    <select id="selectTagsPage" resultType="com.liugaorong.blog.admin.vo.tags.TagsVo">
+        select *
+        from tag
+        <where>
+            is_deleted = 0
+            <if test="name != null and name != ''">
+                and `name` like concat('%', #{name}, '%')
+            </if>
+            <if test="status != null and status != ''">
+                and `status` = #{status}
+            </if>
+        </where>
+    </select>
 </mapper>

@@ -1,6 +1,8 @@
 package com.liugaorong.blog.admin.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.liugaorong.blog.admin.vo.category.CategoryVo;
 import com.liugaorong.blog.model.entity.Category;
 
 /**
@@ -12,6 +14,8 @@ import com.liugaorong.blog.model.entity.Category;
 public interface CategoryMapper extends BaseMapper<Category> {
   
   Long selectArticleCount(Long categoryId);
+  
+  Page<CategoryVo> selectCategoryPage(Page<CategoryVo> page, String name);
 }
 
 

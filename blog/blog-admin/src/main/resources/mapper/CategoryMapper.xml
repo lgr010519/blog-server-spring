@@ -10,4 +10,14 @@
         where category_id = #{categoryId}
           and is_deleted = 0;
     </select>
+    <select id="selectCategoryPage" resultType="com.liugaorong.blog.admin.vo.category.CategoryVo">
+        select *
+        from category
+        <where>
+            is_deleted = 0
+            <if test="name != null and name != ''">
+                and `name` like concat('%', #{name}, '%')
+            </if>
+        </where>
+    </select>
 </mapper>

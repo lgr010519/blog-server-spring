@@ -16,7 +16,7 @@ public class JwtUtil {
     
     return Jwts.builder()
       .setSubject("LOGIN_USER")
-      .setExpiration(new Date(System.currentTimeMillis() + 3600000))
+      .setExpiration(new Date(System.currentTimeMillis() + 3600000 * 24))
       .claim("userId", userId)
       .claim("username", username)
       .signWith(secretKey, SignatureAlgorithm.HS256)

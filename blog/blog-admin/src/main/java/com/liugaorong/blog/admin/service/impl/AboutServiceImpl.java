@@ -27,19 +27,19 @@ public class AboutServiceImpl extends ServiceImpl<AboutMapper, About>
   implements AboutService {
   
   @Autowired
-  private AboutMapper aboutMapper;
+  private AboutMapper mapper;
   
   @Override
   public List<AboutVo> getList() {
     
-    List<About> aboutList = aboutMapper.selectAll();
+    List<About> aboutList = mapper.selectAll();
     
     List<AboutVo> aboutVoList = new ArrayList<>();
     
     for (About about :
       aboutList) {
-      List<TagCloudVo> tagCloudList = aboutMapper.selectTagCloudList(about.getId());
-      List<AboutImgVo> aboutImgList = aboutMapper.selectAboutImgList(about.getId());
+      List<TagCloudVo> tagCloudList = mapper.selectTagCloudList(about.getId());
+      List<AboutImgVo> aboutImgList = mapper.selectAboutImgList(about.getId());
       
       AboutVo aboutVo = new AboutVo();
       
@@ -58,20 +58,20 @@ public class AboutServiceImpl extends ServiceImpl<AboutMapper, About>
     
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     String updateTime = sdf.format(new Date());
-    aboutMapper.updateAboutById(aboutDto.getId(), aboutDto.getDescription(), updateTime);
+    mapper.updateAboutById(aboutDto.getId(), aboutDto.getDescription(), updateTime);
     
-    aboutMapper.deleteAboutImg(aboutDto.getId());
+    mapper.deleteAboutImg(aboutDto.getId());
     
-    aboutMapper.deleteTagCloud(aboutDto.getId());
+    mapper.deleteTagCloud(aboutDto.getId());
     
     for (String imgUrl :
       aboutDto.getAboutImgList()) {
-      aboutMapper.insertAboutImg(aboutDto.getId(), imgUrl);
+      mapper.insertAboutImg(aboutDto.getId(), imgUrl);
     }
     
     for (String name :
       aboutDto.getTagCloudList()) {
-      aboutMapper.insertTagCloud(aboutDto.getId(), name);
+      mapper.insertTagCloud(aboutDto.getId(), name);
     }
   }
 }

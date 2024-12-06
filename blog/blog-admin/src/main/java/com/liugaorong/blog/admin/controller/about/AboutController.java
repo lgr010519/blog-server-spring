@@ -14,7 +14,7 @@ import java.util.List;
 @Tag(name = "关于管理")
 @RestController
 @RequestMapping("/admin/about")
-public class aboutController {
+public class AboutController {
   
   @Autowired
   private AboutService service;
